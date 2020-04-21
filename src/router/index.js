@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
+let routes = [
   {
     path: '/',
     name: 'Home',
@@ -20,8 +20,27 @@ const routes = [
   }
 ]
 
+const requireContext = require.context(
+  './',
+  true,
+  /\.js$/
+)
+requireContext.keys().forEach(fileName => {
+  if (fileName !== './index.js') {
+    const routeFile = requireContext(fileName)
+    // eslint-disable-next-line no-const-assign
+    routes = [...routes, ...(routeFile.default || routeFile)]
+  }
+})
+
 const router = new VueRouter({
   routes
 })
-
+router.addRoutes([
+  {
+    path: '*',
+    name: '404',
+    component: () => import('@/views/404')
+  }
+])
 export default router
