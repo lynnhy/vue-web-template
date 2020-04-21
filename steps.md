@@ -23,23 +23,6 @@ vue add element
 ? Choose the locale you want to load zh-CN
 ```
 
-* git remote add origin
-
-```console
-git remote add origin https://github.com/lynnhy/vue-web-template.git
-git remote --verbose
-origin  git@github.com:lynnhy/vue-web-template.git (fetch)
-origin  git@github.com:lynnhy/vue-web-template.git (push)
-
- ERROR  Failed to compile with 1 errors                       12:33:40
-This dependency was not found:
-
-* element-ui in ./src/plugins/element.js
-
-To install it, you can run: npm install --save element-ui
-```
-
-* git push -u origin master
 * 完善代码组织结构
   * 根据模块来建立试图文件，所有试图页面根据模块来保存在对应的文件夹里
   * 在views下创建layout文件夹，用来博爱村页面的这题布局
